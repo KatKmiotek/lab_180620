@@ -1,7 +1,7 @@
 <template lang="html">
 <li>{{beer.name}}
 <button type="button" v-on:click= 'handleClick'>Details</button>
-<!-- <button type="button" name="button">Add to favourites</button> -->
+<button type="button" v-on:click= 'addToFavourites'>Add to favourites</button>
 </li>
 </template>
 
@@ -14,6 +14,9 @@ export default {
   methods: {
     handleClick() {
       eventBus.$emit('selected-beer', this.beer)
+    },
+    addToFavourites() {
+      eventBus.$emit('favourite-beer', this.beer)
     }
   }
 }

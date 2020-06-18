@@ -5,7 +5,9 @@
     <p>abv: {{beer.abv}}</p>
     <p>Tag line: {{beer.tagline}}</p>
     <p>Goes with: {{ beer.food_pairing[0]}} or {{beer.food_pairing[1]}}</p>
-    <button type="button" v-on:click="addToFavourites" v-if='!favouriteBeer'>Add to favourites</button>
+    <ul v-for="(ingredient,index) in beer.ingredients">
+      <li>{{ingredient.name}}</li>
+    </ul>
   </div>
 </template>
 
@@ -13,17 +15,8 @@
 
 export default {
   name: 'beer-details',
-  data(){
-    return {
-      favouriteBeer: false
-    }
-  },
   props: ['beer'],
-methods: {
-  addToFavourites(){
-    this.favouriteBeer= true
-  }
-  }
+
 }
 </script>
 
